@@ -20,4 +20,4 @@ jobs:
         pip install pylint lxml
     - name: Analysing the code with pylint
       run: |
-        pylint mscz.py
+        pylint mscz.py --extension-pkg-whitelist=lxml
