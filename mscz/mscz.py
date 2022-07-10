@@ -1,3 +1,6 @@
+"""
+Class to parse and analyze MSCZ (MuseScore) data files
+"""
 from lxml import etree
 class Mscz:
     """ Class to parse MSCZ (MuseScore) data files """
@@ -63,7 +66,7 @@ class Mscz:
         geo['even'] = {}
         geo['odd'] = {}
         for child in self.__handle("page-margins", root=self.page_layout()):
-            print(child.tag) #TODO complete this
+            print(child.tag)
         return geo
 
     def __len__ (self):
@@ -95,4 +98,4 @@ class Mscz:
         for child in self.score().iter():
             if child.tag == "Measure":
                 total += 1
-        return total // len(self) #TODO improve this 
+        return total // len(self)
