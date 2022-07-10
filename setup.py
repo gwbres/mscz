@@ -2,6 +2,7 @@
 
 try:
     from setuptools import setup
+    from setuptools import find_namespace_packages
 except ImportError:
     from distutils.core import setup
 
@@ -12,5 +13,6 @@ setup(name="mscz",
     author_email="guillaume.bressaix@gmail.com",
     keywords="parser",
     install_requires=["lxml"],
-    py_modules=["mscz"],
+    packages=find_namespace_packages(include=["mscz"]),
+    package_dir = {"mscz": "mscz"},
 )
