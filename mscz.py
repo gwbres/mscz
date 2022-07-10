@@ -20,11 +20,16 @@ class Mscz:
         Returns handle to Score marker 
         """
         return self.__handle("Score")
+    
+    def part (self):
+        return self.__handle("Part", r=self.score())
+
     def style (self):
         """ 
         Returns handle to Style marker 
         """
         return self.__handle("Style", r=self.score())
+    
     def page_layout (self):
         """ 
         Returns handle to page layout 
@@ -53,12 +58,30 @@ class Mscz:
 
     def __len__ (self):
         """ 
-        Returns number of staff contained in self 
+        Returns number of staffs contained in self 
         """
-        return 0 #TODO
+        i = 0
+        for child in self.part():
+            if child.tag == "Staff":
+                i += 1
+        return i
 
-    def track (self, name):
+    def staff (self, id):
         """ 
         Returns handle to desired track 
         """
-        return None
+        for child in self.part():
+            if child.tag == "Staff":
+                if "id" in child.attribute:
+                    if child.attribute["id"] == id:
+                        return child
+
+    def total_measures (self):
+        """
+        Returns total number of measures
+        """
+        m = 0
+        for c in self.score().iter():
+            if c.tag == "Measure":
+                m += 1
+        return m // len(self) #TODO a revoir
