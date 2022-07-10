@@ -3,7 +3,7 @@ import sys
 from mscz import Mscz
 
 def test_basic():
-    m = Mscz("tests/example.mscx") 
+    m = Mscz("src/tests/example.mscx") 
     assert m.score() is not None
     assert m.style() is not None
     assert m.page_layout() is not None

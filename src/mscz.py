@@ -63,7 +63,7 @@ class Mscz:
         geo['even'] = {}
         geo['odd'] = {}
         for child in self.__handle("page-margins", root=self.page_layout()):
-            print(child.tag) #TODO
+            print(child.tag) #TODO complete this
         return geo
 
     def __len__ (self):
@@ -95,4 +95,4 @@ class Mscz:
         for child in self.score().iter():
             if child.tag == "Measure":
                 total += 1
-        return total // len(self) #TODO a revoir
+        return total // len(self) #TODO improve this 
